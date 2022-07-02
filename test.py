@@ -40,10 +40,17 @@ one_way_btn.click()
 date_picker = WebDriverWait(driver, 10).until(
     EC.presence_of_element_located(
       (By.XPATH, "/html/body/div[3]/div/main/div[1]/div[2]/div/form/div[2]/div/div[3]/div[1]/div[2]/div/div[1]/div/div/div[1]"))
-).click()
+)
+date_picker.click()
+
+date = 'martes, 12 de julio de 2022'
 
 # click on a date of the calendar (July 15, 2022). BY XPATH. THIS FINDS THE DATE OF THE CALENDAR
-origin_date = driver.find_element(By.XPATH, "/html/body/div[3]/div/main/div[1]/div[2]/div/form/div[2]/div/div[3]/div[1]/div[2]/div/div[1]/div/div/div[1]/div/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/table/tbody/tr[3]/td[6]")
+origin_date = WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located(
+      (By.XPATH, "/html/body/div[3]/div/main/div[1]/div[2]/div/form/div[2]/div/div[3]/div[1]/div[2]/div/div[1]/div/div/div[1]/div/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div/div[2]/div/table/tbody/tr[3]/td[@aria-label='{}']".format(date)))
+)
+print(origin_date.text)
 origin_date.click()
 
 # search_button = driver.find_element(By.CLASS_NAME, "search")
